@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <!-- =====================================================
+       META TAGS: configuración básica del documento
+       ===================================================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Descubre la oferta educativa del IES Villa de Mazo para el curso 2026-2027. ESO, Bachillerato, Ciclos Formativos de Informática y Automoción." />
+  <title>Oferta Educativa 2026-2027 | IES Villa de Mazo</title>
+
+  <!-- Enlace al archivo de estilos externo -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- =====================================================
+       HEADER: Encabezado principal del sitio
+       ===================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="header-main">
+      <a href="index.html" class="logo" id="logo">
+        <img src="/src/assets/logotipo.webp" alt="Logo IES Villa de Mazo" class="logo-img" />
+        <div class="logo-text">
+          <span class="logo-title">IES Villa de Mazo</span>
+          <span class="logo-subtitle">Villa de Mazo · La Palma</span>
+        </div>
+      </a>
+
+      <!-- Botón hamburguesa: visible solo en móvil (CSS lo controla) -->
+      <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menú" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <!-- NAVEGACIÓN PRINCIPAL -->
+      <nav class="main-nav" id="mainNav" aria-label="Menú principal">
+        <ul class="nav-list">
+          <li><a href="index.html#hero" class="nav-link">Inicio</a></li>
+          <li><a href="index.html#noticias" class="nav-link">El Centro</a></li>
+          <li><a href="oferta-educativa.html" class="nav-link active">Oferta Educativa</a></li>
+          <li><a href="index.html#sidebar" class="nav-link">Secretaría</a></li>
+          <li><a href="index.html#footer" class="nav-link">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!-- /HEADER -->
+
+
+  <!-- =====================================================
+       OFERTA HERO: Banner superior de la página
+       ===================================================== -->
+  <section class="oferta-hero" aria-label="Cabecera Oferta Educativa">
+    <div class="oferta-hero-overlay"></div>
+    <div class="container oferta-hero-content">
+      <p class="oferta-hero-badge">Curso Académico 2026 – 2027</p>
+      <h1 class="oferta-hero-title">Oferta Educativa</h1>
+      <p class="oferta-hero-subtitle">
+        Construyendo tu futuro profesional en IES Villa de Mazo. Conoce nuestras especialidades y programas.
+      </p>
+    </div>
+  </section>
+  <!-- /OFERTA HERO -->
+
+
+  <!-- =====================================================
+       CONTENIDO PRINCIPAL
+       ===================================================== -->
+  <main class="oferta-main container">
+
+    <!-- SECCIÓN INTRODUCTORIA -->
+    <section class="oferta-intro-section" aria-label="Presentación general">
+      <div class="oferta-intro-grid">
+        <div class="oferta-intro-text">
+          <h2 class="section-title">Formación Integral de Calidad</h2>
+          <p class="section-desc">
+            Te presentamos nuestra <strong>oferta educativa completa para el curso 2026-2027</strong>.
+            Ofrecemos itinerarios adaptados a las necesidades del alumnado, promoviendo el éxito académico y la inserción laboral.
+          </p>
+          <div class="levels-card">
+            <h3 class="levels-card-title">Enseñanzas Impartidas:</h3>
+            <ul class="levels-list">
+              <li>
+                <div class="level-marker">ESO</div>
+                <div class="level-detail">Educación Secundaria Obligatoria</div>
+              </li>
+              <li>
+                <div class="level-marker">DIV</div>
+                <div class="level-detail">Programa de Diversificación en 3º y 4º de ESO</div>
+              </li>
+              <li>
+                <div class="level-marker">BAC</div>
+                <div class="level-detail">Bachillerato (Modalidades de <strong>Ciencia y Tecnología</strong> y de <strong>Humanidades y Ciencias Sociales</strong>)</div>
+              </li>
+              <li>
+                <div class="level-marker">FPB</div>
+                <div class="level-detail">Formación Profesional Básica</div>
+              </li>
+              <li>
+                <div class="level-marker">CFGM</div>
+                <div class="level-detail">Ciclos Formativos de Grado Medio</div>
+              </li>
+              <li>
+                <div class="level-marker">CFGS</div>
+                <div class="level-detail">Ciclo Formativo de Grado Superior</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="oferta-intro-image">
+          <div class="image-card">
+            <img src="https://www3.gobiernodecanarias.org/medusa/edublog/iesvillademazo/wp-content/uploads/sites/190/2026/04/OfForm26_27.jpg"
+              alt="Cartel oficial de Oferta Educativa 2026-2027" class="cartel-img" />
+            <div class="image-card-caption">
+              <span>Oferta Formativa IES Villa de Mazo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAMILIA 1: INFORMÁTICA Y COMUNICACIONES -->
+    <section class="oferta-family-section" id="informatica" aria-label="Familia de Informática">
+      <div class="family-header">
+        <span class="family-badge">Especialidad TIC</span>
+        <h2 class="family-title">Familia Profesional de Informática y Comunicaciones</h2>
+        <p class="family-desc">
+          Prepárate para liderar el sector tecnológico. Impartimos ciclos altamente demandados con prácticas en empresas de vanguardia.
+        </p>
+      </div>
+
+      <!-- Tarjetas de los Ciclos -->
+      <div class="cycles-grid">
+
+        <!-- Ciclo 1: FPB -->
+        <div class="cycle-card">
+          <div class="cycle-body">
+            <span class="cycle-badge badge-fpb">FP Básica</span>
+            <h3 class="cycle-title">Administración y Gestión - Informática de Oficina</h3>
+            <p class="cycle-desc">
+              Accede al mundo laboral con habilidades esenciales en software de oficina, mantenimiento de sistemas y asistencia de bases de datos.
+            </p>
+            <a href="https://www.todofp.es/que-estudiar/familias-profesionales/administracion-gestion/informatica-oficina.html"
+              target="_blank" rel="noopener" class="btn-more-info">Ver plan oficial en TodoFP &rarr;</a>
+          </div>
+          <div class="cycle-media">
+            <div class="video-container">
+              <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts allow-same-origin"
+                title="FPB Administración y Gestión-Informática de oficina"
+                src="https://www3.gobiernodecanarias.org/medusa/mediateca/iesvillademazo/?attachment_id=834&embed=true#?secret=TQYJNPPUOp"
+                frameborder="0" allowfullscreen></iframe>
+            </div>
+            <a href="https://www3.gobiernodecanarias.org/medusa/edublog/iesvillademazo/wp-content/uploads/sites/190/2025/04/1-fpb-informatica.pdf"
+              target="_blank" class="btn btn-pdf">
+              <span class="pdf-icon">📄</span> Descargar Información (PDF)
+            </a>
+          </div>
+        </div>
+
+        <!-- Ciclo 2: CFGM -->
+        <div class="cycle-card">
+          <div class="cycle-body">
+            <span class="cycle-badge badge-cfgm">Grado Medio</span>
+            <h3 class="cycle-title">Sistemas Microinformáticos y Redes (SMR)</h3>
+            <p class="cycle-desc">
+              Aprende a montar y configurar equipos informáticos, administrar redes de datos locales y dar soporte técnico a usuarios e infraestructura.
+            </p>
+            <a href="https://www.todofp.es/que-estudiar/familias-profesionales/informatica-comunicaciones/sistemas-microniformaticos-redes.html"
+              target="_blank" rel="noopener" class="btn-more-info">Ver plan oficial en TodoFP &rarr;</a>
+          </div>
+          <div class="cycle-media">
+            <div class="video-container">
+              <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts allow-same-origin"
+                title="CFGM Sistemas Microinformáticos y Redes"
+                src="https://www3.gobiernodecanarias.org/medusa/mediateca/iesvillademazo/?attachment_id=838&embed=true#?secret=TFcFHMeJk0"
+                frameborder="0" allowfullscreen></iframe>
+            </div>
+            <a href="https://www3.gobiernodecanarias.org/medusa/edublog/iesvillademazo/wp-content/uploads/sites/190/2025/04/2-ciclo-medio-informatica.pdf"
+              target="_blank" class="btn btn-pdf">
+              <span class="pdf-icon">📄</span> Descargar Información (PDF)
+            </a>
+          </div>
+        </div>
+
+        <!-- Ciclo 3: CFGS -->
+        <div class="cycle-card">
+          <div class="cycle-body">
+            <span class="cycle-badge badge-cfgs">Grado Superior</span>
+            <h3 class="cycle-title">Desarrollo de Aplicaciones Multiplataforma (DAM)</h3>
+            <p class="cycle-desc">
+              Domina lenguajes de programación, diseña interfaces interactivas y crea aplicaciones robustas para móviles, ordenadores y entornos cloud.
+            </p>
+            <a href="https://www.todofp.es/que-estudiar/familias-profesionales/informatica-comunicaciones/des-aplicaciones-multiplataforma.html"
+              target="_blank" rel="noopener" class="btn-more-info">Ver plan oficial en TodoFP &rarr;</a>
+          </div>
+          <div class="cycle-media">
+            <div class="video-container">
+              <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts allow-same-origin"
+                title="CFGS Desarrollo de Aplicaciones Multiplataforma"
+                src="https://www3.gobiernodecanarias.org/medusa/mediateca/iesvillademazo/?attachment_id=839&embed=true#?secret=9OSJCdBDdc"
+                frameborder="0" allowfullscreen></iframe>
+            </div>
+            <a href="https://www3.gobiernodecanarias.org/medusa/edublog/iesvillademazo/wp-content/uploads/sites/190/2025/04/3-ciclo-superior-informatica.pdf"
+              target="_blank" class="btn btn-pdf">
+              <span class="pdf-icon">📄</span> Descargar Información (PDF)
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Recursos Adicionales Familia -->
+      <div class="additional-family-resources">
+        <h4 class="resources-title">Vídeos y Folletos Informativos Complementarios:</h4>
+        <div class="resources-grid">
+          <div class="resource-mini-card">
+            <div class="video-container-mini">
+              <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts allow-same-origin"
+                title="Información Familia Informática y Comunicaciones 1"
+                src="https://www3.gobiernodecanarias.org/medusa/mediateca/iesvillademazo/?attachment_id=841&embed=true#?secret=Z5GiVvDuaB"
+                frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="resource-mini-info">
+              <h5>Guía General de Informática</h5>
+              <a href="https://www3.gobiernodecanarias.org/medusa/edublog/iesvillademazo/wp-content/uploads/sites/190/2025/04/4-ciclos-informatica.pdf"
+                target="_blank" class="btn btn-pdf-sm">
+                📄 Descargar Folleto (PDF)
+              </a>
+            </div>
+          </div>
+
+          <div class="resource-mini-card">
+            <div class="video-container-mini">
+              <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts allow-same-origin"
+                title="Información Familia Informática y Comunicaciones 2"
+                src="https://www3.gobiernodecanarias.org/medusa/mediateca/iesvillademazo/?attachment_id=846&embed=true#?secret=9sw9rc5WUY"
+                frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="resource-mini-info">
+              <h5>Modelo Informativo Informática 2</h5>
+              <a href="https://www3.gobiernodecanarias.org/medusa/edublog/iesvillademazo/wp-content/uploads/sites/190/2025/04/5-segundo-informatica-modelo-a3.pdf"
+                target="_blank" class="btn btn-pdf-sm">
+                📄 Descargar Tríptico (PDF)
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAMILIA 2: MANTENIMIENTO DE VEHÍCULOS -->
+    <section class="oferta-family-section" id="automocion" aria-label="Familia de Automoción">
+      <div class="family-header">
+        <span class="family-badge badge-alt">Mecánica y Automoción</span>
+        <h2 class="family-title">Familia Profesional de Transporte y Mantenimiento de Vehículos</h2>
+        <p class="family-desc">
+          Convierte tu pasión por los motores en tu profesión. Fórmate en mecánica clásica, vehículos híbridos y eléctricos, y maquinaria pesada.
+        </p>
+      </div>
+
+      <!-- Tarjetas de los Ciclos -->
+      <div class="cycles-grid">
+
+        <!-- Ciclo 1: FPB -->
+        <div class="cycle-card">
+          <div class="cycle-body">
+            <span class="cycle-badge badge-fpb">FP Básica</span>
+            <h3 class="cycle-title">Transporte y Mantenimiento de Vehículos</h3>
+            <p class="cycle-desc">
+              Iníciate en las operaciones básicas de mecánica de motores, sistemas eléctricos del automóvil y mantenimiento de carrocería.
+            </p>
+            <a href="https://todofp.es/que-estudiar/familias-profesionales/transporte-mantenimiento-vehiculos/mantenimiento-vehiculos.html"
+              target="_blank" rel="noopener" class="btn-more-info">Ver plan oficial en TodoFP &rarr;</a>
+          </div>
+          <div class="cycle-media">
+            <div class="video-container">
+              <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts allow-same-origin"
+                title="FPB Transporte y Mantenimiento de Vehículos"
+                src="https://www3.gobiernodecanarias.org/medusa/mediateca/iesvillademazo/?attachment_id=842&embed=true#?secret=pBhaJPNQ3b"
+                frameborder="0" allowfullscreen></iframe>
+            </div>
+            <a href="https://www3.gobiernodecanarias.org/medusa/edublog/iesvillademazo/wp-content/uploads/sites/190/2025/04/1-fpb-electromecanica.pdf"
+              target="_blank" class="btn btn-pdf">
+              <span class="pdf-icon">📄</span> Descargar Información (PDF)
+            </a>
+          </div>
+        </div>
+
+        <!-- Ciclo 2: CFGM Electromecánica -->
+        <div class="cycle-card">
+          <div class="cycle-body">
+            <span class="cycle-badge badge-cfgm">Grado Medio</span>
+            <h3 class="cycle-title">Electromecánica de Vehículos Automóviles</h3>
+            <p class="cycle-desc">
+              Domina la diagnosis y reparación de motores térmicos y eléctricos, embragues, frenos, transmisiones y sistemas de inyección.
+            </p>
+            <a href="https://todofp.es/que-estudiar/familias-profesionales/transporte-mantenimiento-vehiculos/electromecanica-vehiculos-automoviles.html"
+              target="_blank" rel="noopener" class="btn-more-info">Ver plan oficial en TodoFP &rarr;</a>
+          </div>
+          <div class="cycle-media">
+            <div class="video-container">
+              <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts allow-same-origin"
+                title="CFGM y CFGS Mantenimiento de Vehículos"
+                src="https://www3.gobiernodecanarias.org/medusa/mediateca/iesvillademazo/?attachment_id=843&embed=true#?secret=ukMBXZRvVc"
+                frameborder="0" allowfullscreen></iframe>
+            </div>
+            <a href="https://www3.gobiernodecanarias.org/medusa/edublog/iesvillademazo/wp-content/uploads/sites/190/2025/04/2-medio-y-superior-electromecanica.pdf"
+              target="_blank" class="btn btn-pdf">
+              <span class="pdf-icon">📄</span> Descargar Información (PDF)
+            </a>
+          </div>
+        </div>
+
+        <!-- Ciclo 3: CFGM Maquinaria -->
+        <div class="cycle-card">
+          <div class="cycle-body">
+            <span class="cycle-badge badge-cfgm">Grado Medio</span>
+            <h3 class="cycle-title">Electromecánica de Maquinaria</h3>
+            <p class="cycle-desc">
+              Especialízate en el mantenimiento preventivo y correctivo de motores, sistemas hidráulicos y neumáticos de maquinaria agrícola y de construcción.
+            </p>
+            <a href="https://todofp.es/que-estudiar/familias-profesionales/transporte-mantenimiento-vehiculos/electromecanica-maquinaria.html"
+              target="_blank" rel="noopener" class="btn-more-info">Ver plan oficial en TodoFP &rarr;</a>
+          </div>
+          <div class="cycle-media">
+            <div class="video-container">
+              <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts allow-same-origin"
+                title="CFGM Electromecánica de Maquinaria"
+                src="https://www3.gobiernodecanarias.org/medusa/mediateca/iesvillademazo/?attachment_id=844&embed=true#?secret=Pi9BDsdoNt"
+                frameborder="0" allowfullscreen></iframe>
+            </div>
+            <a href="https://www3.gobiernodecanarias.org/medusa/edublog/iesvillademazo/wp-content/uploads/sites/190/2025/04/3-ciclo-medio-electromecanica-de-maquinaria-pdf.pdf"
+              target="_blank" class="btn btn-pdf">
+              <span class="pdf-icon">📄</span> Descargar Información (PDF)
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Recursos Adicionales Familia -->
+      <div class="additional-family-resources">
+        <h4 class="resources-title">Vídeos y Folletos Informativos Complementarios:</h4>
+        <div class="resources-grid">
+          <div class="resource-mini-card single-resource">
+            <div class="video-container-mini">
+              <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts allow-same-origin"
+                title="Información Familia Mantenimiento de Vehículos"
+                src="https://www3.gobiernodecanarias.org/medusa/mediateca/iesvillademazo/?attachment_id=845&embed=true#?secret=ctLTl7nwlg"
+                frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="resource-mini-info">
+              <h5>Guía Familia Automoción y Mecánica</h5>
+              <a href="https://www3.gobiernodecanarias.org/medusa/edublog/iesvillademazo/wp-content/uploads/sites/190/2025/04/4-electromecanica-modelo-din-a3.pdf"
+                target="_blank" class="btn btn-pdf-sm">
+                📄 Descargar Ficha A3 (PDF)
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LLAMADA A LA ACCIÓN (CONTACTO) -->
+    <section class="oferta-cta-section" aria-label="Dudas y consultas">
+      <div class="cta-card">
+        <h2 class="cta-title">¿Tienes alguna duda o quieres inscribirte?</h2>
+        <p class="cta-desc">
+          ¡Anímate a estudiar con nosotros! Si necesitas aclarar dudas, consultar requisitos de acceso o recibir orientación sobre la matrícula, estamos a tu disposición.
+        </p>
+        <div class="cta-buttons">
+          <a href="mailto:38008419@gobiernodecanarias.org" class="btn btn-primary">
+            ✉️ Escríbenos por Correo
+          </a>
+          <a href="tel:+34922478952" class="btn btn-outline-cta">
+            📞 Llámanos al 922 478 952
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <!-- /CONTENIDO PRINCIPAL -->
+
+
+  <!-- =====================================================
+       FOOTER: Encabezado del fondo del sitio
+       ===================================================== -->
+  <footer class="site-footer" id="footer">
+    <div class="footer-grid container">
+
+      <!-- Columna 1: Información del centro -->
+      <div class="footer-col">
+        <div class="footer-logo">
+          <img src="/src/assets/logotipo.webp" alt="Logo IES Villa de Mazo" class="footer-logo-img" />
+          <span>IES Villa de Mazo</span>
+        </div>
+        <p class="footer-desc">
+          Centro público de educación secundaria, bachillerato y formación
+          profesional ubicado en el municipio de Villa de Mazo, La Palma.
+        </p>
+        <!-- Redes Sociales -->
+        <div class="social-links" aria-label="Redes sociales">
+          <a href="#" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+            </svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Twitter / X">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+              <path
+                d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+            </svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+            </svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+              <path
+                d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
+              <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#fff" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Columna 2: Navegación secundaria -->
+      <div class="footer-col">
+        <h3 class="footer-heading">Navegación</h3>
+        <ul class="footer-links">
+          <li><a href="index.html#hero">Inicio</a></li>
+          <li><a href="index.html#noticias">El Centro</a></li>
+          <li><a href="oferta-educativa.html">Oferta Educativa</a></li>
+          <li><a href="#">Departamentos</a></li>
+          <li><a href="#">AMPA</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 3: Servicios -->
+      <div class="footer-col">
+        <h3 class="footer-heading">Servicios</h3>
+        <ul class="footer-links">
+          <li><a href="#">Aula Virtual (Moodle)</a></li>
+          <li><a href="#">Secretaría Virtual</a></li>
+          <li><a href="#">Biblioteca</a></li>
+          <li><a href="#">Orientación Educativa</a></li>
+          <li><a href="#">Comedor Escolar</a></li>
+          <li><a href="#">Transporte Escolar</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 4: Mapa simulado y dirección -->
+      <div class="footer-col">
+        <h3 class="footer-heading">Cómo llegar</h3>
+        <!-- Google Maps -->
+        <div class="map-container" aria-label="Mapa de localización">
+          <iframe
+            src="https://maps.google.com/maps?q=IES%20Villa%20de%20Mazo,%20Ctra.%20General%20del%20Sur,%20s/n,%2038780%20Villa%20de%20Mazo,%20Santa%20Cruz%20de%20Tenerife&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            width="100%" height="200" style="border:0; border-radius: var(--radius-sm);" allowfullscreen=""
+            loading="lazy"></iframe>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Barra inferior del footer: copyright -->
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 IES Villa de Mazo · Todos los derechos reservados</p>
+        <p>
+          <a href="#">Política de Privacidad</a> ·
+          <a href="#">Aviso Legal</a> ·
+          <a href="#">Accesibilidad</a>
+        </p>
+      </div>
+    </div>
+
+  </footer>
+  <!-- /FOOTER -->
+
+  <!-- =====================================================
+       SCRIPT: enlazamos el archivo JavaScript
+       ===================================================== -->
+  <script src="script.js"></script>
+
+</body>
+
+</html>

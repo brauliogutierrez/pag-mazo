@@ -132,6 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
    * se pulsa un botón de categoría.
    */
   function applyFilters() {
+    if (!searchInput) return;
     // Obtenemos el texto buscado: lo convertimos a minúsculas para comparar
     // .trim() elimina espacios en blanco al inicio y al final
     const searchText = searchInput.value.trim().toLowerCase();
@@ -170,12 +171,14 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // 6. Mostramos u ocultamos el mensaje "sin resultados"
-    if (visibleCount === 0) {
-      // Ninguna tarjeta visible: mostramos el mensaje de aviso
-      noResults.style.display = 'block';
-    } else {
-      // Al menos una tarjeta visible: ocultamos el mensaje
-      noResults.style.display = 'none';
+    if (noResults) {
+      if (visibleCount === 0) {
+        // Ninguna tarjeta visible: mostramos el mensaje de aviso
+        noResults.style.display = 'block';
+      } else {
+        // Al menos una tarjeta visible: ocultamos el mensaje
+        noResults.style.display = 'none';
+      }
     }
   }
 
@@ -187,9 +190,11 @@ document.addEventListener('DOMContentLoaded', function () {
   // incluyendo escritura, borrado, pegar con Ctrl+V, etc.
   // Es más inmediato que 'keyup' (que solo se dispara al soltar tecla).
   // ─────────────────────────────────────────────────────────────────────────
-  searchInput.addEventListener('input', function () {
-    applyFilters(); // Actualizamos los filtros con cada pulsación
-  });
+  if (searchInput) {
+    searchInput.addEventListener('input', function () {
+      applyFilters(); // Actualizamos los filtros con cada pulsación
+    });
+  }
 
 
   // ─────────────────────────────────────────────────────────────────────────
