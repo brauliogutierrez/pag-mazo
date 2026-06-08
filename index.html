@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <!-- =====================================================
+       META TAGS: configuración básica del documento
+       ===================================================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Portal oficial del Instituto de Educación Secundaria Villa de Mazo. Noticias, oferta educativa y acceso al aula virtual." />
+  <title>IES Villa de Mazo –Villa de Mazo </title>
+
+  <!-- Enlace al archivo de estilos externo -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- =====================================================
+       HEADER: Encabezado principal del sitio
+       Contiene: logo, nombre del instituto, nav y controles
+       ===================================================== -->
+  <header class="site-header" id="site-header">
+
+
+    <!-- Contenedor principal del header: logo + nav -->
+    <div class="header-main">
+
+      <!-- LOGO: bloque con icono y nombre del centro -->
+      <a href="#" class="logo" id="logo">
+        <img src="/src/assets/logotipo.webp" alt="Logo IES Villa de Mazo" class="logo-img" />
+        <div class="logo-text">
+          <span class="logo-title">Instituto de Educación Secundaria</span>
+          <span class="logo-subtitle">Villa de Mazo · La Palma</span>
+        </div>
+      </a>
+
+      <!-- Botón hamburguesa: visible solo en móvil (CSS lo controla) -->
+      <!-- El atributo aria-expanded lo actualiza JavaScript para accesibilidad -->
+      <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menú" aria-expanded="false">
+        <!-- Tres líneas que forman el icono hamburguesa -->
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <!-- NAVEGACIÓN PRINCIPAL -->
+      <!-- La clase "nav-open" la añade/quita JavaScript al pulsar hamburguesa -->
+      <nav class="main-nav" id="mainNav" aria-label="Menú principal">
+        <ul class="nav-list">
+          <li><a href="#hero" class="nav-link active">Inicio</a></li>
+          <li><a href="#noticias" class="nav-link">El Centro</a></li>
+          <li><a href="#noticias" class="nav-link">Oferta Educativa</a></li>
+          <li><a href="#sidebar" class="nav-link">Secretaría</a></li>
+          <li><a href="#footer" class="nav-link">Contacto</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+  <!-- /HEADER -->
+
+
+  <!-- =====================================================
+       HERO: Banner principal de bienvenida
+       Ocupa el ancho completo con imagen/color de fondo
+       ===================================================== -->
+  <section class="hero" id="hero" aria-label="Bienvenida al instituto">
+
+    <!-- Video de fondo -->
+    <video autoplay loop muted playsinline class="hero-video">
+      <source src="/src/assets/video.MOV" type="video/quicktime">
+      <source src="/src/assets/video.MOV" type="video/mp4">
+      Tu navegador no soporta videos HTML5.
+    </video>
+
+    <!-- Capa de overlay para oscurecer el fondo y dar legibilidad al texto -->
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <p class="hero-badge">Curso Académico 2026 – 2027</p>
+      <h1 class="hero-title">Bienvenidos al <br><strong>IES Villa de Mazo</strong></h1>
+      <p class="hero-subtitle">
+        Un espacio de aprendizaje, convivencia y crecimiento personal.<br>
+        Educación de calidad en el corazón de La Palma.
+      </p>
+      <!-- Grupo de botones de acción -->
+      <div class="hero-actions">
+        <a href="#noticias" class="btn btn-primary">Ver Noticias</a>
+        <a href="#sidebar" class="btn btn-outline">Aula Virtual</a>
+      </div>
+    </div>
+
+  </section>
+  <!-- /HERO -->
+
+
+  <!-- =====================================================
+       SECCIÓN DE FILTROS: Barra de búsqueda y categorías
+       La lógica de filtrado está completamente en script.js
+       ===================================================== -->
+  <section class="filter-bar" id="filtros" aria-label="Filtrar noticias">
+    <div class="container">
+
+      <!-- Campo de búsqueda de texto libre -->
+      <div class="search-wrapper">
+        <label for="searchInput" class="visually-hidden">Buscar noticias</label>
+        <input type="search" id="searchInput" class="search-input" placeholder="🔍 Buscar noticias..."
+          aria-label="Buscar noticias por texto" />
+      </div>
+
+      <!-- Botones de categoría para filtrar tarjetas -->
+      <!-- El atributo data-category es leído por JavaScript -->
+      <div class="category-filters" role="group" aria-label="Filtrar por categoría">
+        <button class="filter-btn active" data-category="todos">Todos</button>
+        <button class="filter-btn" data-category="actividades">Actividades</button>
+        <button class="filter-btn" data-category="examenes">Exámenes</button>
+        <button class="filter-btn" data-category="eventos">Eventos</button>
+        <button class="filter-btn" data-category="avisos">Avisos</button>
+      </div>
+
+    </div>
+  </section>
+  <!-- /FILTROS -->
+
+
+  <!-- =====================================================
+       MAIN: Cuerpo principal del sitio
+       Layout de dos columnas: contenido + sidebar
+       ===================================================== -->
+  <main class="site-main container" id="main">
+
+    <!-- ─────────────────────────────────────────────────
+         SECCIÓN NOTICIAS: Columna izquierda/central
+         Tablón de anuncios con tarjetas (cards)
+         ───────────────────────────────────────────────── -->
+    <section class="news-section" id="noticias" aria-label="Noticias y novedades">
+
+      <div class="section-header">
+        <h2 class="section-title">📋 Noticias y Novedades</h2>
+        <p class="section-subtitle">Mantente al día con todo lo que ocurre en el instituto</p>
+      </div>
+
+      <!-- Contenedor de tarjetas – JavaScript itera sobre estos article -->
+      <div class="news-grid" id="newsGrid">
+
+        <!-- ── TARJETA 1 (Real) ── -->
+        <article class="news-card" data-category="actividades"
+          data-title="cero rasguños radio marimbola prevención salud labora">
+          <div class="card-image">
+            <img
+              src="https://www3.gobiernodecanarias.org/medusa/edublog/iesvillademazo/wp-content/uploads/sites/190/2018/04/logo.jpg"
+              alt="Cero rasguños" />
+          </div>
+          <div class="card-badge actividades">Actividades</div>
+          <div class="card-body">
+            <time class="card-date" datetime="2026-06-08">8 de junio, 2026</time>
+            <h3 class="card-title">Cero rasguños</h3>
+            <p class="card-excerpt">
+              Los alumnos del Ciclo Formativo de Grado Básico de Transporte y Mantenimiento de Vehículos han realizado,
+              en la materia de Prevención y Salud Laboral, este programa especial sobre prevención en talleres en
+              nuestra radio escolar "Radio Marímbola".
+            </p>
+            <a href="https://www3.gobiernodecanarias.org/medusa/edublog/iesvillademazo/2026/06/08/cero-rasgunos/"
+              target="_blank" class="card-link">Leer más →</a>
+          </div>
+        </article>
+
+        <!-- ── TARJETA 2 (Real) ── -->
+        <article class="news-card" data-category="eventos"
+          data-title="transparencia alfombra corpus christi anselmo brito">
+          <div class="card-image">
+            <img
+              src="https://www3.gobiernodecanarias.org/medusa/edublog/iesvillademazo/wp-content/uploads/sites/190/2026/06/Corpus202600-400x250.jpg"
+              alt="Transparencia" />
+          </div>
+          <div class="card-badge eventos">Eventos</div>
+          <div class="card-body">
+            <time class="card-date" datetime="2026-06-05">5 de junio, 2026</time>
+            <h3 class="card-title">Transparencia</h3>
+            <p class="card-excerpt">
+              "Transparencia" es el título de la alfombra diseñada por nuestro compañero jubilado don Anselmo Brito
+              Álvarez con motivo de las fiestas del Corpus Christi. Un trabajo arduo de alumnos y personal del centro.
+            </p>
+            <a href="https://www3.gobiernodecanarias.org/medusa/edublog/iesvillademazo/2026/06/05/transparencias/"
+              target="_blank" class="card-link">Leer más →</a>
+          </div>
+        </article>
+
+        <!-- ── TARJETA 3 (Real) ── -->
+        <article class="news-card" data-category="actividades" data-title="vela latina día de canarias club la pestana">
+          <div class="card-image">
+            <img
+              src="https://www3.gobiernodecanarias.org/medusa/edublog/iesvillademazo/wp-content/uploads/sites/190/2026/05/Canarias2630-400x250.jpg"
+              alt="Vela Latina" />
+          </div>
+          <div class="card-badge actividades">Actividades</div>
+          <div class="card-body">
+            <time class="card-date" datetime="2026-06-03">3 de junio, 2026</time>
+            <h3 class="card-title">Vela Latina en el IES Villa de Mazo</h3>
+            <p class="card-excerpt">
+              Con motivo del Día de Canarias, nuestro alumnado disfrutó de una magnífica exhibición de vela latina
+              impartida por tripulantes del Club de Vela Latina La Pestana, acercando los deportes tradicionales de las
+              islas.
+            </p>
+            <a href="https://www3.gobiernodecanarias.org/medusa/edublog/iesvillademazo/2026/06/03/vela-latina-en-el-ies-villa-de-mazo/"
+              target="_blank" class="card-link">Leer más →</a>
+          </div>
+        </article>
+
+        <!-- ── TARJETA 4 (Real) ── -->
+        <article class="news-card" data-category="examenes"
+          data-title="calendario de exámenes extraordinarios de 2º de bachiller">
+          <div class="card-image">
+            <img
+              src="https://www3.gobiernodecanarias.org/medusa/edublog/iesvillademazo/wp-content/uploads/sites/190/2024/10/cal-400x250.jpg"
+              alt="Calendario de exámenes extraordinarios de 2º de Bachiller" />
+          </div>
+          <div class="card-badge examenes">Exámenes</div>
+          <div class="card-body">
+            <time class="card-date" datetime="2026-05-19">19 de mayo, 2026</time>
+            <h3 class="card-title">Calendario de exámenes extraordinarios de 2º de Bachiller</h3>
+            <p class="card-excerpt">
+              Se publica el calendario de pruebas de evaluación extraordinaria para el alumnado de segundo curso de
+              Bachillerato. Rogamos comprueben las fechas y horas detalladas.
+            </p>
+            <a href="https://www3.gobiernodecanarias.org/medusa/edublog/iesvillademazo/2026/05/19/calendario-de-examenes-extraordinarios-de-2o-de-bachiller/"
+              target="_blank" class="card-link">Leer más →</a>
+          </div>
+        </article>
+
+        <!-- ── TARJETA 5 (Real) ── -->
+        <article class="news-card" data-category="avisos"
+          data-title="oferta educativa para el curso bachillerato eso fp">
+          <div class="card-image">
+            <img
+              src="https://www3.gobiernodecanarias.org/medusa/edublog/iesvillademazo/wp-content/uploads/sites/190/2026/04/OfForm26_27-400x250.jpg"
+              alt="Oferta educativa" />
+          </div>
+          <div class="card-badge avisos">Avisos</div>
+          <div class="card-body">
+            <time class="card-date" datetime="2026-04-12">12 de abril, 2026</time>
+            <h3 class="card-title">Oferta educativa para el curso 2026-2027</h3>
+            <p class="card-excerpt">
+              Te presentamos nuestra oferta educativa completa para el curso académico, incluyendo Educación Secundaria
+              Obligatoria, Bachillerato y Ciclos de Formación Profesional.
+            </p>
+            <a href="https://www3.gobiernodecanarias.org/medusa/edublog/iesvillademazo/2026/04/12/oferta-educativa-para-el-curso-2026-2027/"
+              target="_blank" class="card-link">Leer más →</a>
+          </div>
+        </article>
+
+        <!-- ── TARJETA 6 (Real) ── -->
+        <article class="news-card" data-category="avisos" data-title="solicitud de plaza matricula eso fp">
+          <div class="card-image">
+            <img
+              src="https://www3.gobiernodecanarias.org/medusa/edublog/iesvillademazo/wp-content/uploads/sites/190/2026/04/SolPlaza26_27-400x250.jpg"
+              alt="Solicitud de plaza" />
+          </div>
+          <div class="card-badge avisos">Avisos</div>
+          <div class="card-body">
+            <time class="card-date" datetime="2026-04-12">12 de abril, 2026</time>
+            <h3 class="card-title">Solicitud de plaza para el curso 2026-2027</h3>
+            <p class="card-excerpt">
+              Abierto el período de solicitud de plaza escolar para Educación Secundaria Obligatoria y Formación
+              Profesional. Las solicitudes deben tramitarse de forma telemática.
+            </p>
+            <a href="https://www3.gobiernodecanarias.org/medusa/edublog/iesvillademazo/2026/04/12/solicitud-de-plaza-en-eso-y-fp-para-el-curso-2026-2027/"
+              target="_blank" class="card-link">Leer más →</a>
+          </div>
+        </article>
+
+      </div><!-- /news-grid -->
+
+      <!-- Mensaje que aparece cuando ninguna tarjeta coincide con el filtro -->
+      <div class="no-results" id="noResults" aria-live="polite">
+        <p>😕 No se encontraron noticias para tu búsqueda.</p>
+      </div>
+
+    </section>
+    <!-- /NOTICIAS -->
+
+
+    <!-- ─────────────────────────────────────────────────
+         ASIDE / SIDEBAR: Columna derecha
+         Panel lateral con accesos rápidos
+         ───────────────────────────────────────────────── -->
+    <aside class="sidebar" id="sidebar" aria-label="Accesos rápidos">
+
+      <!-- Widget: Accesos Rápidos -->
+      <div class="widget">
+        <h2 class="widget-title">⚡ Accesos Rápidos</h2>
+        <ul class="quick-links">
+          <li>
+            <a href="#" class="quick-link">
+              <span class="ql-icon">🖥️</span>
+              <span class="ql-text">
+                <strong>Aula Virtual</strong>
+                <small>Plataforma Moodle</small>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="quick-link">
+              <span class="ql-icon">📅</span>
+              <span class="ql-text">
+                <strong>Calendario Escolar</strong>
+                <small>Curso 2026/2027</small>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="quick-link">
+              <span class="ql-icon">📝</span>
+              <span class="ql-text">
+                <strong>Secretaría Virtual</strong>
+                <small>Trámites online</small>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="quick-link">
+              <span class="ql-icon">🕐</span>
+              <span class="ql-text">
+                <strong>Horarios de Clase</strong>
+                <small>Ver horarios</small>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="quick-link">
+              <span class="ql-icon">📰</span>
+              <span class="ql-text">
+                <strong>Revista Escolar</strong>
+                <small>Última edición</small>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Widget: Próximos Eventos -->
+      <div class="widget">
+        <h2 class="widget-title">📆 Próximos Eventos</h2>
+        <ul class="event-list">
+          <li class="event-item">
+            <div class="event-date">
+              <span class="event-day">15</span>
+              <span class="event-month">NOV</span>
+            </div>
+            <p class="event-name">Puertas Abiertas</p>
+          </li>
+          <li class="event-item">
+            <div class="event-date">
+              <span class="event-day">22</span>
+              <span class="event-month">NOV</span>
+            </div>
+            <p class="event-name">Evaluación 1.er Trimestre</p>
+          </li>
+          <li class="event-item">
+            <div class="event-date">
+              <span class="event-day">05</span>
+              <span class="event-month">DIC</span>
+            </div>
+            <p class="event-name">Semana Cultural</p>
+          </li>
+          <li class="event-item">
+            <div class="event-date">
+              <span class="event-day">20</span>
+              <span class="event-month">DIC</span>
+            </div>
+            <p class="event-name">Inicio Vacaciones Navidad</p>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Widget: Contacto Rápido -->
+      <div class="widget widget-contact">
+        <h2 class="widget-title">📞 Contacto</h2>
+        <address class="contact-info">
+          <p>📍 Ctra. General del Sur, s/n<br>38780 Villa de Mazo, S/C de Tenerife</p>
+          <p>📞 <a href="tel:+34928000000">928 000 000</a></p>
+          <p>✉️ <a href="mailto:secretaria@iesvillademazo.es">secretaria@iesvillademazo.es</a></p>
+        </address>
+      </div>
+
+    </aside>
+    <!-- /SIDEBAR -->
+
+  </main>
+  <!-- /MAIN -->
+
+
+  <!-- =====================================================
+       FOOTER: Pie de página
+       Información de contacto, mapa y redes sociales
+       ===================================================== -->
+  <footer class="site-footer" id="footer" aria-label="Pie de página">
+
+    <div class="footer-grid container">
+
+      <!-- Columna 1: Información del centro -->
+      <div class="footer-col">
+        <div class="footer-logo">
+          <img src="/src/assets/logotipo.webp" alt="Logo IES Villa de Mazo" class="footer-logo-img" />
+          <span>Instituto Villa de Mazo</span>
+        </div>
+        <p class="footer-desc">
+          Centro público de educación secundaria, bachillerato y formación
+          profesional ubicado en el municipio de Villa de Mazo, La Palma.
+        </p>
+        <!-- Redes Sociales -->
+        <div class="social-links" aria-label="Redes sociales">
+          <a href="#" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+            </svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Twitter / X">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+              <path
+                d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+            </svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+            </svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+              <path
+                d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
+              <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#fff" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Columna 2: Navegación secundaria -->
+      <div class="footer-col">
+        <h3 class="footer-heading">Navegación</h3>
+        <ul class="footer-links">
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#">El Centro</a></li>
+          <li><a href="#">Oferta Educativa</a></li>
+          <li><a href="#">Departamentos</a></li>
+          <li><a href="#">AMPA</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 3: Servicios -->
+      <div class="footer-col">
+        <h3 class="footer-heading">Servicios</h3>
+        <ul class="footer-links">
+          <li><a href="#">Aula Virtual (Moodle)</a></li>
+          <li><a href="#">Secretaría Virtual</a></li>
+          <li><a href="#">Biblioteca</a></li>
+          <li><a href="#">Orientación Educativa</a></li>
+          <li><a href="#">Comedor Escolar</a></li>
+          <li><a href="#">Transporte Escolar</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 4: Mapa simulado y dirección -->
+      <div class="footer-col">
+        <h3 class="footer-heading">Cómo llegar</h3>
+        <!-- Google Maps -->
+        <div class="map-container" aria-label="Mapa de localización">
+          <iframe src="https://maps.google.com/maps?q=IES%20Villa%20de%20Mazo,%20Ctra.%20General%20del%20Sur,%20s/n,%2038780%20Villa%20de%20Mazo,%20Santa%20Cruz%20de%20Tenerife&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="200" style="border:0; border-radius: var(--radius-sm);" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Barra inferior del footer: copyright -->
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 Instituto de Educación Secundaria Villa de Mazo · Todos los derechos reservados</p>
+        <p>
+          <a href="#">Política de Privacidad</a> ·
+          <a href="#">Aviso Legal</a> ·
+          <a href="#">Accesibilidad</a>
+        </p>
+      </div>
+    </div>
+
+  </footer>
+  <!-- /FOOTER -->
+
+
+  <!-- =====================================================
+       SCRIPT: enlazamos el archivo JavaScript al final del
+       body para que el DOM esté completamente cargado
+       ===================================================== -->
+  <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,1037 @@
+/* ===================================================================
+   ARCHIVO: styles.css
+   PROYECTO: IES Villa de Mazo – Portal Educativo
+   DESCRIPCIÓN: Estilos organizados por secciones con comentarios
+                educativos. Usa Custom Properties (variables CSS),
+                Flexbox, CSS Grid y Media Queries para ser responsive.
+   =================================================================== */
+
+
+/* ───────────────────────────────────────────────────────────────────
+   1. VARIABLES GLOBALES (Custom Properties / CSS Variables)
+   Las variables permiten definir los colores y valores una sola vez
+   y reutilizarlos en todo el archivo. Si quieres cambiar el color
+   principal solo lo modificas aquí.
+   ─────────────────────────────────────────────────────────────────── */
+:root {
+  /* Paleta de colores – Tema Claro (Modo Día) */
+  --color-primary:      #1a5276;   /* Azul institucional oscuro */
+  --color-primary-light:#2e86c1;   /* Azul intermedio */
+  --color-primary-dark: #154360;   /* Azul muy oscuro (hover) */
+  --color-accent:       #f39c12;   /* Ámbar/naranja para acentos */
+  --color-accent-dark:  #d68910;   /* Ámbar oscuro (hover) */
+
+  --color-bg:           #f4f6f9;   /* Fondo general de la página */
+  --color-surface:      #ffffff;   /* Fondo de tarjetas y widgets */
+  --color-surface-alt:  #eaf2fb;   /* Fondo alternativo suave */
+
+  --color-text:         #1c2833;   /* Texto principal */
+  --color-text-muted:   #5d6d7e;   /* Texto secundario / suave */
+  --color-border:       #d5d8dc;   /* Bordes sutiles */
+
+  --color-topbar-bg:    #154360;   /* Fondo de la franja superior */
+  --color-topbar-text:  #aed6f1;   /* Texto en la franja superior */
+
+  --color-footer-bg:    #0e2d42;   /* Fondo del footer */
+  --color-footer-text:  #aed6f1;   /* Texto en el footer */
+
+  /* Tipografía – stack de fuentes seguras del sistema */
+  --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               Oxygen, Ubuntu, Helvetica, Arial, sans-serif;
+
+  /* Espaciado base */
+  --space-xs:  0.25rem;   /*  4px */
+  --space-sm:  0.5rem;    /*  8px */
+  --space-md:  1rem;      /* 16px */
+  --space-lg:  1.5rem;    /* 24px */
+  --space-xl:  2rem;      /* 32px */
+  --space-2xl: 3rem;      /* 48px */
+
+  /* Bordes redondeados */
+  --radius-sm:  4px;
+  --radius-md:  8px;
+  --radius-lg: 16px;
+
+  /* Sombras */
+  --shadow-sm:  0 1px 4px rgba(0,0,0,.08);
+  --shadow-md:  0 4px 16px rgba(0,0,0,.12);
+  --shadow-lg:  0 8px 32px rgba(0,0,0,.16);
+
+  /* Transición estándar para animaciones suaves */
+  --transition: all 0.3s ease;
+}
+
+/* ───────────────────────────────────────────────────────────────────
+   2. MODO OSCURO (Dark Mode)
+   Cuando JavaScript añade la clase "dark-mode" al <body>, estas
+   variables sobreescriben las del :root y cambian todos los colores.
+   ─────────────────────────────────────────────────────────────────── */
+body.dark-mode {
+  --color-bg:           #0d1117;
+  --color-surface:      #161b22;
+  --color-surface-alt:  #21262d;
+  --color-text:         #c9d1d9;
+  --color-text-muted:   #8b949e;
+  --color-border:       #30363d;
+  --color-topbar-bg:    #010409;
+  --color-topbar-text:  #58a6ff;
+  --color-footer-bg:    #010409;
+  --color-footer-text:  #8b949e;
+  --shadow-sm:          0 1px 4px rgba(0,0,0,.4);
+  --shadow-md:          0 4px 16px rgba(0,0,0,.5);
+}
+
+
+/* ───────────────────────────────────────────────────────────────────
+   3. RESET Y BASE GLOBAL
+   Normalizamos estilos entre navegadores y establecemos la base.
+   ─────────────────────────────────────────────────────────────────── */
+
+/* Box-sizing: hace que padding y border NO aumenten el tamaño del elemento */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Configuración global del documento */
+html {
+  scroll-behavior: smooth;  /* Scroll suave al hacer clic en anclas */
+  font-size: 16px;          /* Base para unidades rem */
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;                /* Espaciado entre líneas de texto */
+  transition: background-color 0.4s ease, color 0.4s ease; /* Transición suave al cambiar modo */
+}
+
+/* Imágenes responsivas por defecto */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Eliminamos estilos de listas */
+ul {
+  list-style: none;
+}
+
+/* Estilos base para los enlaces */
+a {
+  color: var(--color-primary-light);
+  text-decoration: none;
+  transition: var(--transition);
+}
+a:hover {
+  color: var(--color-accent);
+}
+
+/* Clase utilitaria: oculta texto visualmente pero lo mantiene accesible
+   para lectores de pantalla (accesibilidad web) */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+/* Contenedor: limita el ancho máximo y centra el contenido */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+
+/* ───────────────────────────────────────────────────────────────────
+   4. HEADER – Encabezado principal
+   ─────────────────────────────────────────────────────────────────── */
+
+/* El header usa position:sticky para que quede fijo al hacer scroll */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;           /* Debe estar por encima de todo el contenido */
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+}
+
+
+
+/* ── Contenedor logo + nav ── */
+.header-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;  /* Logo a la izquierda, nav a la derecha */
+  padding: var(--space-sm) var(--space-lg);
+  gap: var(--space-md);
+}
+
+/* ── Logo ── */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+/* Imagen del logo del centro */
+.logo-img {
+  width: auto;
+  height: 52px;
+  object-fit: contain;
+  flex-shrink: 0;  /* No se encoge en pantallas pequeñas */
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;  /* Apila los textos verticalmente */
+  line-height: 1.2;
+}
+.logo-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+.logo-subtitle {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+/* ── Navegación principal ── */
+.main-nav {
+  /* En escritorio el nav es visible por defecto */
+}
+.nav-list {
+  display: flex;
+  gap: var(--space-xs);
+  align-items: center;
+}
+.nav-link {
+  color: var(--color-text);
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+  white-space: nowrap;  /* Evita que el texto de un enlace se parta */
+}
+.nav-link:hover,
+.nav-link.active {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+/* ── Botón hamburguesa ── */
+/* Por defecto está oculto. Solo aparece en móvil (via Media Query) */
+.hamburger {
+  display: none;            /* Oculto en escritorio */
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-xs);
+  border-radius: var(--radius-sm);
+}
+
+/* Cada "barra" del icono hamburguesa */
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--color-text);
+  border-radius: 3px;
+  transition: var(--transition);
+}
+
+/* Animación del hamburguer al estar activo (se convierte en X) */
+/* JavaScript añade/quita la clase "is-active" al botón hamburguesa */
+.hamburger.is-active .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.hamburger.is-active .bar:nth-child(2) {
+  opacity: 0;  /* La barra del medio desaparece */
+}
+.hamburger.is-active .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+
+/* ───────────────────────────────────────────────────────────────────
+   5. HERO – Banner principal
+   ─────────────────────────────────────────────────────────────────── */
+.hero {
+  position: relative;          /* Necesario para el overlay absoluto */
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-2xl) var(--space-lg);
+  /* Degradado de fondo: simula la imagen de la escuela */
+  background: linear-gradient(
+    135deg,
+    #0b2d4e 0%,
+    #1a5276 40%,
+    #1a7a5e 100%
+  );
+  overflow: hidden;             /* Evita que el pseudo-elemento salga del hero */
+}
+
+/* Video de fondo */
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Capa decorativa de puntos sobre el fondo */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;                     /* Equivale a top:0; right:0; bottom:0; left:0 */
+  background-image: radial-gradient(circle, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 30px 30px;
+  pointer-events: none;         /* No bloquea clics */
+  z-index: 1;
+}
+
+/* Overlay oscuro para mejorar legibilidad del texto */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45); /* Un poco más oscuro para mejor contraste con el video */
+  z-index: 1;
+}
+
+/* Contenido del hero: debe estar por encima del overlay */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+}
+
+/* Etiqueta pequeña sobre el título */
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,.25);
+  color: #fff;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: 99px;          /* Píldora */
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--space-md);
+}
+
+.hero-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);  /* Escala fluidamente con la pantalla */
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: var(--space-md);
+  text-shadow: 0 2px 12px rgba(0,0,0,.3);
+}
+.hero-title strong {
+  color: var(--color-accent);
+}
+
+.hero-subtitle {
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: var(--space-xl);
+  line-height: 1.7;
+}
+
+/* ── Botones del Hero ── */
+.hero-actions {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Estilo base de botones */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: var(--transition);
+  letter-spacing: 0.3px;
+}
+
+/* Botón sólido (primario) */
+.btn-primary {
+  background-color: var(--color-accent);
+  color: #0e1a0e;
+}
+.btn-primary:hover {
+  background-color: var(--color-accent-dark);
+  color: #0e1a0e;
+  transform: translateY(-2px);     /* Efecto de "flotar" al pasar el ratón */
+  box-shadow: 0 6px 20px rgba(243,156,18,.4);
+}
+
+/* Botón con borde (outline) */
+.btn-outline {
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255,255,255,.6);
+}
+.btn-outline:hover {
+  background: rgba(255,255,255,.15);
+  border-color: #fff;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+
+/* ───────────────────────────────────────────────────────────────────
+   6. BARRA DE FILTROS (Buscador + botones de categoría)
+   ─────────────────────────────────────────────────────────────────── */
+.filter-bar {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-md) 0;
+  position: sticky;
+  top: 89px;   /* Compensa la altura del header sticky */
+  z-index: 900;
+  box-shadow: var(--shadow-sm);
+}
+
+.filter-bar .container {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+/* Input de búsqueda */
+.search-wrapper {
+  flex: 1 1 220px;  /* Crece, puede encogerse, mínimo 220px */
+}
+.search-input {
+  width: 100%;
+  padding: 0.6rem var(--space-md);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: var(--transition);
+  outline: none;
+}
+.search-input:focus {
+  border-color: var(--color-primary-light);
+  box-shadow: 0 0 0 3px rgba(46,134,193,.2);  /* Anillo de foco accesible */
+}
+
+/* Contenedor de botones de categoría */
+.category-filters {
+  display: flex;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+/* Botones de filtro */
+.filter-btn {
+  padding: 0.4rem 1rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: 99px;    /* Forma de píldora */
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: var(--font-main);
+}
+.filter-btn:hover {
+  border-color: var(--color-primary-light);
+  color: var(--color-primary-light);
+}
+/* Botón activo (seleccionado): JavaScript añade/quita esta clase */
+.filter-btn.active {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+
+/* ───────────────────────────────────────────────────────────────────
+   7. MAIN – Cuerpo principal (Grid de dos columnas)
+   ─────────────────────────────────────────────────────────────────── */
+.site-main {
+  display: grid;
+  /* Dos columnas: contenido ocupa ~2 partes, sidebar ~1 parte */
+  grid-template-columns: 1fr 340px;
+  gap: var(--space-xl);
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-2xl);
+  align-items: start;  /* Las columnas no estiran al 100% de altura */
+}
+
+
+/* ───────────────────────────────────────────────────────────────────
+   8. SECCIÓN DE NOTICIAS
+   ─────────────────────────────────────────────────────────────────── */
+.section-header {
+  margin-bottom: var(--space-lg);
+}
+.section-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: var(--space-xs);
+}
+.section-subtitle {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+/* Grid de tarjetas: columnas automáticas de mínimo 280px */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-lg);
+}
+
+/* Imagen de la tarjeta */
+.card-image {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--color-surface-alt);
+}
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+/* ── Tarjeta de Noticia ── */
+.news-card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Efecto hover de la tarjeta */
+.news-card:hover {
+  transform: translateY(-4px);     /* Sube ligeramente */
+  box-shadow: var(--shadow-md);
+}
+.news-card:hover .card-image img {
+  transform: scale(1.05);          /* Zoom suave en la imagen */
+}
+
+/* La clase "hidden" la añade JavaScript para ocultar tarjetas filtradas */
+.news-card.hidden {
+  display: none;
+}
+
+/* Etiqueta de categoría (badge) en la parte superior de la tarjeta */
+.card-badge {
+  padding: var(--space-xs) var(--space-sm);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+/* Colores por categoría: cada tipo tiene su propio color */
+.card-badge.actividades { background-color: #d5f5e3; color: #1a7a3c; }
+.card-badge.examenes    { background-color: #fde8d8; color: #9a4a00; }
+.card-badge.eventos     { background-color: #d6eaf8; color: #1a5276; }
+.card-badge.avisos      { background-color: #fdedec; color: #a93226; }
+
+/* En modo oscuro, los badges también deben adaptarse */
+body.dark-mode .card-badge.actividades { background-color: #0d2f1a; color: #58d68d; }
+body.dark-mode .card-badge.examenes    { background-color: #2e1a0a; color: #f0a060; }
+body.dark-mode .card-badge.eventos     { background-color: #0a1e2e; color: #5dade2; }
+body.dark-mode .card-badge.avisos      { background-color: #2e0a0a; color: #ec7063; }
+
+/* Cuerpo de la tarjeta */
+.card-body {
+  padding: var(--space-md);
+  flex: 1;                  /* Ocupa el espacio restante de la card */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.card-date {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.4;
+}
+
+.card-excerpt {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  flex: 1;  /* Hace que el extracto ocupe el espacio, empujando el link abajo */
+}
+
+.card-link {
+  display: inline-block;
+  margin-top: var(--space-sm);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-primary-light);
+}
+.card-link:hover {
+  color: var(--color-accent);
+}
+
+/* Mensaje "sin resultados" – oculto por defecto, JS lo muestra cuando proceda */
+.no-results {
+  display: none;            /* JavaScript cambia esto a flex cuando no hay resultados */
+  text-align: center;
+  padding: var(--space-2xl);
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
+
+
+/* ───────────────────────────────────────────────────────────────────
+   9. SIDEBAR – Barra lateral
+   ─────────────────────────────────────────────────────────────────── */
+
+/* Sticky: el sidebar se "pega" al desplazarse */
+.sidebar {
+  position: sticky;
+  top: 145px;   /* Altura del header + filter-bar */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* ── Widget genérico ── */
+.widget {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.widget-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 2px solid var(--color-primary);
+}
+
+/* ── Accesos Rápidos ── */
+.quick-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.quick-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  transition: var(--transition);
+}
+.quick-link:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+  transform: translateX(4px);  /* Deslizamiento sutil al hacer hover */
+}
+
+.ql-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+.ql-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+.ql-text strong {
+  font-size: 0.88rem;
+}
+.ql-text small {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+/* ── Lista de Eventos ── */
+.event-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.event-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface-alt);
+  border-left: 3px solid var(--color-primary-light);
+}
+
+/* "Calendario" pequeño con día y mes */
+.event-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-primary);
+  color: #fff;
+  border-radius: var(--radius-sm);
+  padding: var(--space-xs);
+  min-width: 42px;
+  flex-shrink: 0;
+}
+.event-day {
+  font-size: 1.2rem;
+  font-weight: 900;
+  line-height: 1;
+}
+.event-month {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.event-name {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.3;
+}
+
+/* ── Widget de Contacto ── */
+.contact-info {
+  font-style: normal;
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+.contact-info a {
+  color: var(--color-primary-light);
+}
+
+
+/* ───────────────────────────────────────────────────────────────────
+   10. FOOTER – Pie de página
+   ─────────────────────────────────────────────────────────────────── */
+.site-footer {
+  background-color: var(--color-footer-bg);
+  color: var(--color-footer-text);
+  margin-top: var(--space-2xl);
+}
+
+/* Grid del footer: 4 columnas en escritorio */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: var(--space-xl);
+  padding: var(--space-2xl) var(--space-lg);
+}
+
+/* Logo dentro del footer */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #fff;
+}
+.footer-logo-img {
+  width: auto;
+  height: 40px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.footer-desc {
+  font-size: 0.86rem;
+  line-height: 1.7;
+  margin-bottom: var(--space-md);
+  opacity: 0.8;
+}
+
+/* ── Redes Sociales ── */
+.social-links {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.social-btn {
+  width: 36px;
+  height: 36px;
+  background: rgba(255,255,255,.1);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-footer-text);
+  transition: var(--transition);
+}
+.social-btn:hover {
+  background: var(--color-primary-light);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ── Columnas del Footer ── */
+.footer-heading {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: var(--space-md);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+.footer-links a {
+  font-size: 0.85rem;
+  color: var(--color-footer-text);
+  opacity: 0.8;
+  transition: var(--transition);
+}
+.footer-links a:hover {
+  opacity: 1;
+  color: #fff;
+  padding-left: var(--space-xs);
+}
+
+/* ── Contenedor del Mapa ── */
+.map-container {
+  width: 100%;
+  border-radius: var(--radius-md);
+  overflow: hidden; /* Para que el iframe respete el border-radius */
+}
+
+/* ── Franja inferior del Footer ── */
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.1);
+  padding: var(--space-md) var(--space-lg);
+}
+.footer-bottom .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+.footer-bottom a {
+  color: var(--color-footer-text);
+}
+.footer-bottom a:hover {
+  color: #fff;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   11. MEDIA QUERIES – Diseño Responsivo
+   Las media queries adaptan el layout según el ancho del viewport.
+   Usamos la estrategia "desktop-first": ajustamos hacia abajo.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── TABLET: pantallas de hasta 1024px ── */
+@media (max-width: 1024px) {
+
+  /* El main pasa a una sola columna en tablet */
+  .site-main {
+    grid-template-columns: 1fr;
+  }
+
+  /* El sidebar deja de ser sticky en tablet para no bloquear el scroll */
+  .sidebar {
+    position: static;
+  }
+
+  /* El footer pasa a 2 columnas */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Reducimos el tamaño del sidebar en tablet (ocupa todo el ancho) */
+  .sidebar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-md);
+  }
+}
+
+
+/* ── MÓVIL: pantallas de hasta 768px ── */
+@media (max-width: 768px) {
+
+  /* ── Header en móvil ── */
+  .topbar span:first-child {
+    display: none;  /* Ocultamos el teléfono para ahorrar espacio */
+  }
+
+  .header-main {
+    flex-wrap: wrap;
+  }
+
+  /* El logo ocupa todo el ancho disponible */
+  .logo-title {
+    font-size: 0.88rem;
+  }
+
+  /* Mostramos el botón hamburguesa en móvil */
+  .hamburger {
+    display: flex;
+  }
+
+  /* El nav se oculta verticalmente por defecto en móvil */
+  .main-nav {
+    width: 100%;
+    max-height: 0;            /* Altura 0: nav colapsado */
+    overflow: hidden;
+    transition: max-height 0.35s ease;  /* Animación de apertura */
+    order: 3;                 /* Va después del logo y el hamburguesa */
+  }
+
+  /* Cuando JavaScript añade "nav-open" al nav, se despliega */
+  .main-nav.nav-open {
+    max-height: 400px;        /* Suficiente para mostrar todos los items */
+  }
+
+  /* El nav en móvil es vertical */
+  .nav-list {
+    flex-direction: column;
+    align-items: stretch;     /* Los links ocupan todo el ancho */
+    padding: var(--space-sm) 0;
+    gap: var(--space-xs);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .nav-link {
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  /* ── Filter bar en móvil ── */
+  .filter-bar {
+    top: 0;  /* En móvil no hace falta compensar tanto */
+    position: static;
+  }
+
+  /* ── Noticias: 1 columna en móvil ── */
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* ── Sidebar: 1 columna en móvil ── */
+  .sidebar {
+    grid-template-columns: 1fr;
+  }
+
+  /* ── Footer: 1 columna en móvil ── */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .footer-bottom .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* ── Hero en móvil ── */
+  .hero {
+    min-height: 380px;
+    padding: var(--space-xl) var(--space-md);
+  }
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+/* ── MÓVIL PEQUEÑO: pantallas de hasta 480px ── */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 var(--space-md);
+  }
+
+  .logo-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 0.9rem;
+  }
+
+  .topbar {
+    justify-content: center;
+    gap: var(--space-sm);
+    font-size: 0.72rem;
+  }
+
+  .filter-bar .container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .category-filters {
+    justify-content: center;
+  }
+}
